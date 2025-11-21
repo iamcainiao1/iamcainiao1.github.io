@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<style>
+.bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: -1; /* 确保容器在内容下方 */
+}
+/* 背景图片：绝对定位覆盖全屏 */
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持图片比例并覆盖整个容器 */
+  opacity: 0; /* 初始状态为透明 */
+  animation: fadeInOut 12s infinite; /* 动画总时长12秒，无限循环 */
+  transition: opacity 0.3s ease-in-out; /* 平滑的淡入淡出过渡 */
+}
+
+/* 为每张图片设置不同的动画延迟，实现顺序播放 */
+.bg-image:nth-child(1) { animation-delay: 0s; }   /* 第一张图：0秒开始 */
+.bg-image:nth-child(2) { animation-delay: 1.5s; }   
+.bg-image:nth-child(3) { animation-delay: 3s; }
+.bg-image:nth-child(4) { animation-delay: 4.5s; }
+.bg-image:nth-child(5) { animation-delay: 6s; }
+.bg-image:nth-child(6) { animation-delay: 7.5s; }
+.bg-image:nth-child(7) { animation-delay: 9s; }
+ 
+
+/* 定义核心动画：淡入 -> 停留 -> 淡出 */
+@keyframes fadeInOut {
+  /* 0% - 淡入开始 */
+  0% {
+    opacity: 0;
+  }
+  /* 淡入阶段：例如用0.5秒完成淡入 */
+  4% { 
+    opacity: 1;
+  }
+  /* 停留阶段：保持不透明，持续一段时间 */
+  29% { 
+    opacity: 1;
+  }
+  /* 淡出阶段：例如用0.5秒完成淡出 */
+  33% { 
+    opacity: 0;
+  }
+  /* 等待阶段：在动画剩余的时间里保持透明 */
+  100% {
+    opacity: 0;
+  }
+}
+.content-wrapper {
+  /* 1. 限制最大宽度，防止内容在大屏幕上过宽 */
+  max-width: 1200px; 
+
+  /* 2. 设置左右外边距为 auto，实现水平居中 */
+  margin: 0 auto; 
+
+  /* 3. 设置内边距，控制内容与半透明背景边缘的距离 */
+  padding: 40px 20px; 
+}
+/* 页面内容样式（确保在背景之上） */
+        table {
+            border-collapse: collapse; /* 合并边框，避免双边框 */
+            width: 500px; /* 表格宽度，可自行调整 */
+            font-family: "华文行楷", sans-serif;
+        }
+        /* 单元格样式：边框、内边距、文字对齐 */
+        td {
+            border: 2px solid #2ecef1; /* 浅灰色边框 */
+            padding: 8px 12px; /* 单元格内边距，让内容不拥挤 */
+            text-align: center;
+            color:black;
+        }
+        /* 第一行（表头行）的样式：深蓝色背景、白色文字 */
+        tr:first-child td {
+            background-color: #0F4C81; /* 示例中的深蓝色 */
+            color: rgb(26, 26, 26); /* 文字白色 */
+            font-weight: bold;
+        }
+        /* 交替行背景色：灰色/浅灰 */
+        tr:nth-child(even) td {
+            background-color: #E6E6E6; /* 浅灰色 */
+        }
+        tr:nth-child(odd) td {
+            background-color: #F2F2F2; /* 更浅的灰色 */
+        }
+.bg-content {
+   position: relative;
+  z-index: 1;
+  color: white;
+  background: rgba(0, 0, 0, 0.49);
+  text-align: center;
+  padding: 0vh 0px;
+  font-size: 24px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  left: 0;
+  top: 0;
+  width: 100%; /* 使用百分比宽度 */
+  height: 98vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>bababoy</title>
+</head>
+<body>
+  <div class="bg-container">
+    <img src="图片资源/5.1.jpg" class="bg-image" >
+    <img src="图片资源/5.2.jpg" class="bg-image" >
+    <img src="图片资源/5.3.jpg" class="bg-image" >
+    <img src="图片资源/5.4.jpg" class="bg-image" >
+    <img src="图片资源/5.5.jpg" class="bg-image" >
+    <img src="图片资源/5.6.jpg" class="bg-image" >
+    <img src="图片资源/5.7.jpg" class="bg-image" >
+  </div>
+    <div class="bg-content">
+        <h1>主要个人赛冠军一览</h1><br> 
+        <table>
+        <tr>
+            <td>三星杯夺冠</td>
+            <td>4次</td>
+        </tr>
+        <tr>
+            <td>百灵杯加冕</td>
+            <td>2次</td>
+        </tr>
+        <tr>
+            <td>新奥杯称霸</td>
+            <td>1次</td>
+        </tr>
+        <tr>
+            <td>桐山杯冠军</td>
+            <td>3个</td>
+        </tr>
+        <tr>
+            <td>倡棋杯金腰带</td>
+            <td>1个</td>
+        </tr>
+        <tr>
+            <td>央视贺岁杯冠军</td>
+            <td>2个</td>
+        </tr>
+        <tr>
+            <td>梦百合杯称王</td>
+            <td>1次</td>
+        </tr>
+        <tr>
+            <td>围甲联赛冠军</td>
+            <td>2个</td>
+        </tr>
+        <tr>
+            <td>农心杯冠军</td>
+            <td>3个</td>
+        </tr>
+    </table>
+    </div>
+  </div>
+</body>
+</html>

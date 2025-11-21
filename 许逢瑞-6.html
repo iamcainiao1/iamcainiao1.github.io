@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<style>
+.bg-overlay {
+  position: fixed; /* 固定在视口，滚动时背景不移动 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 宽度=100%视口宽度 */
+  height: 100vh; /* 高度=100%视口高度 */
+  margin: 0; /* 清除默认边距 */
+  background-image: url("图片资源/_20251119111252_1_31.jpg"); /* 你的背景图路径 */
+  background-size: cover; /* 核心：图片铺满容器，保持比例（不拉伸） */
+  background-position: center; /* 图片居中显示 */
+  background-repeat: no-repeat; /* 禁止图片重复平铺 */
+  background-attachment: fixed; /* 可选：滚动页面时背景固定不动（视差效果） */
+  display: flex;
+  align-items: center; /* 内容垂直居中 */
+  justify-content: center; /* 内容水平居中 */
+  overflow: hidden; /* 若内容超出屏幕，允许滚动 */
+  animation: floatBackground 3s ease-in-out infinite; /* 8秒循环，缓入缓出 */
+}
+/* 定义漂浮动画：改变 background-size */
+@keyframes floatBackground {
+  0% {
+    background-size: 100% 100%; /* 初始尺寸 */
+  }
+  50% {
+    background-size: 103% 103%; /* 放大到110%（水平+垂直） */
+  }
+  100% {
+    background-size: 100% 100%; /* 回到初始尺寸 */
+  }
+}
+.bg-content {
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.49);
+  padding: 80px 40px; /* 左右内边距调小，避免过宽 */
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column; /* 标题和按钮组垂直排列 */
+  align-items: center;
+  gap: 30px; /* 标题和按钮组之间的间距 */
+}
+.button-group {
+  display: flex;
+  gap: 15px; /* 按钮之间的水平间距 */
+  flex-wrap: wrap; /* 屏幕缩小时自动换行，避免溢出 */
+  justify-content: center; /* 换行后依然居中 */
+}
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+/* 文字流光效果的核心：伪元素覆盖文字并添加渐变 */
+.button {
+  /* 基础样式 */
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background: linear-gradient(45deg, #01beb2, #0243bc);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block; 
+  /* 关键：添加过渡效果，让变化更平滑 */
+  transition: all 0.3s ease;
+}
+.button:hover {
+  /* 悬停时：颜色渐变反向，轻微放大 */
+  background: linear-gradient(45deg, #b800ac, #059847);
+  transform: scale(1.05); /* 放大 5% */
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3); /* 添加阴影 */
+}
+.button:hover {
+  background-color: #9ab3ce; /*  hover 时深色 */
+}
+</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>bababoy</title>
+</head>
+<body>
+  <div class="bg-overlay">
+    <div class="bg-content">
+      <h1>震惊世界的LG杯事件及其后续</h1>
+      <h3>注：背景图片即为LG杯事件</h3><br>
+      <a href="https://www.bilibili.com/video/BV1XFfzYpEmv" class="button">LG杯发生了什么</a> 
+      <a href="D:\新生实践课作业\许逢瑞-6（1）.html" class="button">后续影响</a>
+      <a href="D:\新生实践课作业\许逢瑞-6（2）.html" class="button">柯洁近况</a>
+  </div>
+</body>
+</html>

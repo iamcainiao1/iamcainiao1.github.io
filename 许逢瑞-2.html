@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<style>
+/* 背景容器：占满全屏，溢出隐藏 */
+.bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: -1; /* 确保容器在内容下方 */
+}
+/* 背景图片：绝对定位覆盖全屏 */
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持图片比例并覆盖整个容器 */
+  opacity: 0; /* 初始状态为透明 */
+  animation: fadeInOut 12s infinite; /* 动画总时长12秒，无限循环 */
+  transition: opacity 0.5s ease-in-out; /* 平滑的淡入淡出过渡 */
+}
+
+/* 为每张图片设置不同的动画延迟，实现顺序播放 */
+.bg-image:nth-child(1) { animation-delay: 0s; }   /* 第一张图：0秒开始 */
+.bg-image:nth-child(2) { animation-delay: 4s; }   /* 第二张图：4秒开始 (0.5+3+0.5) */
+.bg-image:nth-child(3) { animation-delay: 8s; }   /* 第三张图：8秒开始 (4s + 4s) */
+
+/* 定义核心动画：淡入 -> 停留 -> 淡出 */
+@keyframes fadeInOut {
+  /* 0% - 淡入开始 */
+  0% {
+    opacity: 0;
+  }
+  /* 淡入阶段：例如用0.5秒完成淡入 */
+  4% { /* 12s * 4% ≈ 0.5s */
+    opacity: 1;
+  }
+  /* 停留阶段：保持不透明，持续一段时间 */
+  29% { /* 12s * 29% ≈ 3.5s */
+    opacity: 1;
+  }
+  /* 淡出阶段：例如用0.5秒完成淡出 */
+  33% { /* 12s * 33% ≈ 4s */
+    opacity: 0;
+  }
+  /* 等待阶段：在动画剩余的时间里保持透明 */
+  100% {
+    opacity: 0;
+  }
+}
+.content-wrapper {
+  /* 1. 限制最大宽度，防止内容在大屏幕上过宽 */
+  max-width: 1200px; 
+
+  /* 2. 设置左右外边距为 auto，实现水平居中 */
+  margin: 0 auto; 
+
+  /* 3. 设置内边距，控制内容与半透明背景边缘的距离 */
+  padding: 40px 20px; 
+}
+/* 页面内容样式（确保在背景之上） */
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  background: rgba(0, 0, 0, 0.49);
+  text-align: center;
+  padding: 20vh 0px;
+  font-size: 24px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  position: fixed; /* 固定定位，覆盖全屏 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 宽度占满视口 */
+  height: 100vh; /* 高度占满视口 */
+  margin: 0; /* 清除默认边距 */
+}
+</style>
+</head>
+<body>
+  <!-- 背景容器：嵌套三张图片 -->
+  <div class="bg-container">
+    <img src="图片资源/2.1.jpg" class="bg-image" >
+    <img src="图片资源/2.2.jpg" class="bg-image" >
+    <img src="图片资源/2.3.jpg" class="bg-image" >
+  </div>
+  <!-- 页面内容 -->
+  <div class="content">
+    <div class="content-wrapper">
+    <h1>
+        初出茅庐
+    </h1>
+    <h3>在2005年2月，柯洁参加在杭州举行的浙江省山海杯少儿围棋赛，夺得乙组冠军，随后到北京聂卫平道场求学，进入道场后柯洁发现身边高手如云，自己在前两三年里完全处于垫底的位置，于是在弈城上注册了账号练棋，网名为“潜伏”。2011年到2015年的4年时间里，他在弈城对战总数为4033局。关于他下棋到底有勤奋，有这样的一个最高记录：一个月172局，一天接近6局。大多数人对这一点可能没什么概念，简单来说，职业棋手一局棋至少在一个至一个半小时左右，再加上复盘时间，也就相当于一天几乎不离开棋。柯洁也曾坦白：那段时间经常把自己关在房间里，饭也不吃，一股脑地下棋。
+</h3>
+    </div>
+  </div>
+</body>
+</html>
