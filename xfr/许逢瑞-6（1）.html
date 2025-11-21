@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<style>
+.bg-overlay {
+  position: fixed; /* 固定在视口，滚动时背景不移动 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 宽度=100%视口宽度 */
+  height: 100vh; /* 高度=100%视口高度 */
+  margin: 0; /* 清除默认边距 */
+  background-image: url("图片资源/_20251119111252_1_31.jpg"); /* 你的背景图路径 */
+  background-size: cover; /* 核心：图片铺满容器，保持比例（不拉伸） */
+  background-position: center; /* 图片居中显示 */
+  background-repeat: no-repeat; /* 禁止图片重复平铺 */
+  background-attachment: fixed; /* 可选：滚动页面时背景固定不动（视差效果） */
+  display: flex;
+  align-items: center; /* 内容垂直居中 */
+  justify-content: center; /* 内容水平居中 */
+  overflow: hidden; /* 若内容超出屏幕，允许滚动 */
+  animation: floatBackground 10s ease-in-out infinite; /* 8秒循环，缓入缓出 */
+}
+/* 定义漂浮动画：改变 background-size */
+@keyframes floatBackground {
+  0% {
+    background-size: 100% 100%; /* 初始尺寸 */
+  }
+  50% {
+    background-size: 115% 115%; /* 放大到110%（水平+垂直） */
+  }
+  100% {
+    background-size: 100% 100%; /* 回到初始尺寸 */
+  }
+}
+.bg-content {
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.49);
+  padding: 80px 40px; /* 左右内边距调小，避免过宽 */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>bababoy</title>
+</head>
+<body>
+  <div class="bg-overlay">
+    <div class="bg-content">
+      <h1>该问题主要针对舆论与韩国方面</h1>
+      <h3>1.柯洁受到国内棋迷和网友大力支持<br>
+          2.韩国棋手被禁止参加中国围棋甲级联赛，意味着韩国棋手的竞技水平下降，在11月的三星杯中韩国第一人和第二人均被状态正盛的廖元赫击败，正是最好的体现。<br>
+          3.韩国体育道德问题再遭热议，中国棋友群起而攻之。<br>
+      </h3>
+    </div>
+  </div>
+</body>
+</html>

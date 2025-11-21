@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<style>
+.bg-overlay {
+  position: fixed; /* 固定在视口，滚动时背景不移动 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 宽度=100%视口宽度 */
+  height: 100vh; /* 高度=100%视口高度 */
+  margin: 0; /* 清除默认边距 */
+  background-image: url("图片资源/6.1.jpg"); /* 你的背景图路径 */
+  background-size: cover; /* 核心：图片铺满容器，保持比例（不拉伸） */
+  background-position: center; /* 图片居中显示 */
+  background-repeat: no-repeat; /* 禁止图片重复平铺 */
+  background-attachment: fixed; /* 可选：滚动页面时背景固定不动（视差效果） */
+  display: flex;
+  align-items: center; /* 内容垂直居中 */
+  justify-content: center; /* 内容水平居中 */
+  overflow: hidden; /* 若内容超出屏幕，允许滚动 */
+  animation: floatBackground 7s ease-in-out infinite; /* 8秒循环，缓入缓出 */
+}
+/* 定义漂浮动画：改变 background-size */
+@keyframes floatBackground {
+  0% {
+    background-size: 100% 100%; /* 初始尺寸 */
+  }
+  50% {
+    background-size: 108% 108%; /* 放大到110%（水平+垂直） */
+  }
+  100% {
+    background-size: 100% 100%; /* 回到初始尺寸 */
+  }
+}
+.bg-content {
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  text-align: center;
+  background: rgba(145, 145, 145, 0.49);
+  padding: 80px 40px; /* 左右内边距调小，避免过宽 */
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column; /* 标题和按钮组垂直排列 */
+  align-items: center;
+  gap: 30px; /* 标题和按钮组之间的间距 */
+}
+.button-group {
+  display: flex;
+  gap: 15px; /* 按钮之间的水平间距 */
+  flex-wrap: wrap; /* 屏幕缩小时自动换行，避免溢出 */
+  justify-content: center; /* 换行后依然居中 */
+}
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #ff0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+/* 文字流光效果的核心：伪元素覆盖文字并添加渐变 */
+.button {
+  /* 基础样式 */
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background: linear-gradient(45deg, #5e5e5e, #000000);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block; 
+  /* 关键：添加过渡效果，让变化更平滑 */
+  transition: all 0.3s ease;
+}
+.button:hover {
+  /* 悬停时：颜色渐变反向，轻微放大 */
+  background: linear-gradient(45deg, #363636, #727272);
+  transform: scale(1.05); /* 放大 5% */
+  box-shadow: 0 5px 25px rgba(255, 18, 18, 0.3); /* 添加阴影 */
+}
+.button:hover {
+  background-color: #9ab3ce; /*  hover 时深色 */
+}
+.content-wrapper {
+  /* 1. 限制最大宽度，防止内容在大屏幕上过宽 */
+  max-width: 800px; 
+
+  /* 2. 设置左右外边距为 auto，实现水平居中 */
+  margin: 0 auto; 
+
+  /* 3. 设置内边距，控制内容与半透明背景边缘的距离 */
+  padding: 40px 20px; 
+}
+/* 页面内容样式（确保在背景之上） */
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  background: rgba(0, 0, 0, 0.49);
+  text-align: center;
+  padding: 20vh 0px;
+  font-size: 24px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  position: fixed; /* 固定定位，覆盖全屏 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 宽度占满视口 */
+  height: 100vh; /* 高度占满视口 */
+  margin: 0; /* 清除默认边距 */
+}
+</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>bababoy</title>
+</head>
+<body>
+  <div class="bg-overlay">
+    <div class="bg-content">
+      <div class="content-wrapper">
+      <h1>棋圣战卫冕———意外之喜</h1><br>
+      <h4>9月底，柯洁作为上届棋圣接受挑战，在不被外界看好的情况下卫冕，这一事件再度激发了他对围棋的热爱，目前已经重返围甲并取得二连胜。</h4><br>
+      <a href="https://www.bilibili.com/video/BV1dxnozWEcr" class="button">救赎虽不彻底，也称得上奇迹</a>  
+      </div>
+    </div>
+  </div>
+</body>
+</html>
